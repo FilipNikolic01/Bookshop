@@ -1,0 +1,22 @@
+[
+ {
+  "BookId": 1,
+  "AuthorId": 6
+ },
+ {
+  "BookId": 2,
+  "AuthorId": 8
+ },
+ {
+  "BookId": 3,
+  "AuthorId": 7
+ },
+ {
+  "BookId": 4,
+  "AuthorId": 9
+ },
+ {
+  "BookId": 5,
+  "AuthorId": 10
+ }
+]

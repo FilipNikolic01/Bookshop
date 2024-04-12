@@ -1,0 +1,22 @@
+[
+ {
+  "BookId": 1,
+  "GenreId": 5
+ },
+ {
+  "BookId": 2,
+  "GenreId": 3
+ },
+ {
+  "BookId": 3,
+  "GenreId": 2
+ },
+ {
+  "BookId": 4,
+  "GenreId": 7
+ },
+ {
+  "BookId": 5,
+  "GenreId": 2
+ }
+]

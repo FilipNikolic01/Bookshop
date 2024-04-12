@@ -1,0 +1,32 @@
+[
+ {
+  "PublisherId": "nextvalueforseq_Publishers",
+  "Name": "Laguna",
+  "LogoURL": "https:\/\/laguna.rs\/__public\/img\/template\/logo-laguna-2019.png",
+  "Description": "Izdavačka kuća Laguna osnovana je aprila 1998. godine. Prvi i jedini naslov objavljen te godine bio je „Boja magije“ Terija Pračeta. Dvadeset pet godina kasnije Laguna je najveći srpski izdavač i lider u regionu."
+ },
+ {
+  "PublisherId": "nextvalueforseq_Publishers",
+  "Name": "Vulkan Izdavaštvo",
+  "LogoURL": "https:\/\/www.vulkani.rs\/files\/images\/vulkan\/logo.png",
+  "Description": "Vulkan izdavaštvo od svog nastanka 2013. godine važi za najveću izdavačku kuću u našem regionu i lider je u oblasti izdavaštva. Vulkan izdavaštvo je nastalo spajanjem dve progresivne izdavačke kuće, Alnari i Mono i Manjana, nadahnute vizijom boljeg i unapređenog izdavaštva u Srbiji. Vulkan izdavaštvo objedinjuje tradiciju, prepoznatljiv kvalitet i želju da se prate moderni tokovi ali i kreira budućnost. Mi smo kuća koja neguje kvalitetnu pisanu reč."
+ },
+ {
+  "PublisherId": "nextvalueforseq_Publishers",
+  "Name": "Čarobna Knjiga",
+  "LogoURL": "https:\/\/carobnaknjiga.rs\/thm\/ck\/assets\/images\/logo\/logo.svg",
+  "Description": "Izdavačka kuća „Čarobna knjiga\" vodi se idejom da se čitalackoj publici na jednom mestu omoguće knjige najkvalitetnijih autora iz više oblasti, kako bi čitaoci imali širok izbor i kako bi svako mogao da odabere dobre naslove prema svom afinitetu."
+ },
+ {
+  "PublisherId": "nextvalueforseq_Publishers",
+  "Name": "Urban Reads",
+  "LogoURL": "https:\/\/urbanreads.rs\/__public\/img\/logo.png",
+  "Description": "Urban Reads je izdavačka kuća osnovana 2013. godine. Nastala je iz želje da kod mladih probudi ljubav prema čitanju i da im omogući da na maternjem jeziku čitaju najvažnije savremene pisce omladinske književnosti."
+ },
+ {
+  "PublisherId": "nextvalueforseq_Publishers",
+  "Name": "Publik Praktikum",
+  "LogoURL": "https:\/\/www.publikpraktikum.rs\/pp-logo.png",
+  "Description": "Jedan od ciljeva našeg izdavaštva je i podsticanje čitalačke kulture kod mladih i negovanje ljubavi prema knjizi. Otkupili smo prava i objavili romane koji su veoma aktuelni među mlađom populacijom, pre svega tinejdžerima. Među našim prevodima nalaze se najpoznatiji svetski autori."
+ }
+]

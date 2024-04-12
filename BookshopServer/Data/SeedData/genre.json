@@ -1,0 +1,30 @@
+[
+ {
+  "Name": "Comedy",
+  "Description": "Komedija je jedna od osnovnih vrsta drame. Osnovno sredstvo komedije jeste smeh, predstavljen kroz humor i komiku. S druge strane, široko se upotrebljavaju i druga dramska sredstva poput ironije, sarkazma, satire i groteske. Smeh u komediji izvire iz dramskih situacija i nesnalaženja ljudi u njima. Zbog toga, glavni likovi ovakvih dela bivaju ismevani zbog svojih nedostataka, mana i poroka."
+ },
+ {
+  "Name": "Drama",
+  "Description": "Drama je žanr koji najviše zavisi o unutrašnjem razvoju stvarnih likova koji se suočavaju s emocionalnim temama. Dramske teme kao što su alkoholizam, narkomanija, rasne predrasude, religijska netolerancija, siromaštvo, kriminal i korupcija stavljaju likove u sukob sa njima samima, drugima, društvom i čak prirodnim fenomenima."
+ },
+ {
+  "Name": "Thriller",
+  "Description": "Triler je filmski, televizijski i književni žanr prepun napetosti i iznenađenja. Trileri jako stimulišu gledaočevo rasploženje, pružajući mu osećaje napetosti, uzbuđenja, iznenađenja, iščekivanja i strepnje."
+ },
+ {
+  "Name": "Horror",
+  "Description": "Horor je žanr fantastike koji je namenjen da uplaši ili zgrozi svoje čitaoce izazivajući osećaje strave i užasa."
+ },
+ {
+  "Name": "Fantasy",
+  "Description": "Fantastika je književni žanr, oblik spekulativne fikcije koji u zavisnosti od podžanra uvodi čitaoca u neku od različitih postavki sveta. Radnja dela fantastike može se odigravati u ovom ili nekom izmišljenom svetu, u prošlosti ili budućnosti."
+ },
+ {
+  "Name": "Science Fiction",
+  "Description": "Naučna fantastika jeste žanr u kojem deo ili cela priča zavisi od uticaja nauke, bilo stvarnog ili zamišljenog, da stvori uslove ili događaje koji se u stvarnosti još nisu desili (a koji nikada i ne moraju da se dese)."
+ },
+ {
+  "Name": "Romance",
+  "Description": "Ljubavni roman, nekada pogrdno nazivan i ljubić, je vrsta romana, odnosno žanrovske fikcije čija glavna tema su osećanja glavnih junaka. To je najčešće lako štivo, često prepuno dijaloga, kako bi čitalac mogao lakše da se uživi u priču."
+ }
+]
