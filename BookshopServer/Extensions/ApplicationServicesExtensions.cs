@@ -13,6 +13,7 @@ namespace BookshopServer.Extensions
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<IPublisherRepository, PublisherRepository>();
             services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.Configure<ApiBehaviorOptions>(options =>
