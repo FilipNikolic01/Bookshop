@@ -1,4 +1,7 @@
-﻿using BookshopServer.Entities;
+﻿using AutoMapper;
+using BookshopServer.Dtos;
+using BookshopServer.Entities;
+using BookshopServer.Errors;
 using BookshopServer.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +13,15 @@ namespace BookshopServer.Controllers
     public class ShoppingCartController : ControllerBase
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
+        private readonly IMapper _mapper;
+        private readonly IGenericRepository<Book> _bookRepository;
 
-        public ShoppingCartController(IShoppingCartRepository shoppingCartRepository)
+        public ShoppingCartController(IShoppingCartRepository shoppingCartRepository, IMapper mapper,
+            IGenericRepository<Book> genericRepository)
         {
             _shoppingCartRepository = shoppingCartRepository;
+            _mapper = mapper;
+            _bookRepository = genericRepository;
         }
 
         [HttpGet]
@@ -25,9 +33,21 @@ namespace BookshopServer.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<ShoppingCart>> UpdateShoppingCart(ShoppingCart cart)
+        public async Task<ActionResult<ShoppingCart>> UpdateShoppingCart(ShoppingCartDto cart)
         {
-            var updatedCart = await _shoppingCartRepository.UpdateShoppingCartAsync(cart);
+            var shoppingCart = _mapper.Map<ShoppingCartDto, ShoppingCart>(cart);
+
+            foreach(var item in shoppingCart.Items)
+            {
+                var book = await _bookRepository.GetByIdAsync(item.Id);
+
+                var availableQuantity = book.QuantityInStock;
+
+                if (item.Quantity > availableQuantity)
+                    return BadRequest(new ApiResponse(400, "Željena količina nije dostupna"));
+            }
+
+            var updatedCart = await _shoppingCartRepository.UpdateShoppingCartAsync(shoppingCart);
 
             return Ok(updatedCart);
         }

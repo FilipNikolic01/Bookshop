@@ -1,4 +1,5 @@
-﻿using BookshopServer.Errors;
+﻿using BookshopServer.Data.Services;
+using BookshopServer.Errors;
 using BookshopServer.Interfaces;
 using BookshopServer.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,7 @@ namespace BookshopServer.Extensions
             services.AddScoped<IBookRepository, BookRepository>();
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<ITokenService, TokenService>();
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

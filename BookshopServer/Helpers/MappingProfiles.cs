@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookshopServer.Dtos;
 using BookshopServer.Entities;
+using BookshopServer.Entities.Identity;
 
 namespace BookshopServer.Helpers
 {
@@ -16,6 +17,9 @@ namespace BookshopServer.Helpers
             CreateMap<Author, AuthorDto>().ReverseMap();
             CreateMap<Genre, GenreDto>().ReverseMap();
             CreateMap<Publisher, PublisherDto>().ReverseMap();
+            CreateMap<Address, AddressDto>().ReverseMap();
+            CreateMap<ShoppingCartDto, ShoppingCart>();
+            CreateMap<CartItemDto, CartItem>();
         }
     }
 }

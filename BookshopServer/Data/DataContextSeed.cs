@@ -1,4 +1,7 @@
-﻿using BookshopServer.Entities;
+﻿using BookshopServer.Data.Static;
+using BookshopServer.Entities;
+using BookshopServer.Entities.Identity;
+using Microsoft.AspNetCore.Identity;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
 
@@ -107,5 +110,6 @@ namespace BookshopServer.Data
             }
 
         }
+
     }
 }

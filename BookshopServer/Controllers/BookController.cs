@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using BookshopServer.Data.Static;
 using BookshopServer.Dtos;
 using BookshopServer.Entities;
 using BookshopServer.Errors;
 using BookshopServer.Helpers;
 using BookshopServer.Interfaces;
 using BookshopServer.Specifications;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookshopServer.Controllers
@@ -54,6 +56,7 @@ namespace BookshopServer.Controllers
             return Ok(_mapper.Map<Book, BookViewDto>(book));
         }
 
+        [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof (ApiResponse), StatusCodes.Status400BadRequest)]
@@ -70,6 +73,7 @@ namespace BookshopServer.Controllers
             return Created();
         }
 
+        [Authorize(Roles = UserRoles.Admin)]
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
@@ -90,6 +94,7 @@ namespace BookshopServer.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = UserRoles.Admin)]
         [HttpDelete("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(typeof (ApiResponse), StatusCodes.Status400BadRequest)]
