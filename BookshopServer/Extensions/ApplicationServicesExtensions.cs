@@ -1,4 +1,5 @@
-﻿using BookshopServer.Data.Services;
+﻿using BookshopServer.Data;
+using BookshopServer.Data.Services;
 using BookshopServer.Errors;
 using BookshopServer.Interfaces;
 using BookshopServer.Repositories;
@@ -17,6 +18,8 @@ namespace BookshopServer.Extensions
             services.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

@@ -1,6 +1,7 @@
 ﻿using BookshopServer.Data.Static;
 using BookshopServer.Entities;
 using BookshopServer.Entities.Identity;
+using BookshopServer.Entities.OrderAggregate;
 using Microsoft.AspNetCore.Identity;
 using System.Runtime.CompilerServices;
 using System.Text.Json;
@@ -97,6 +98,20 @@ namespace BookshopServer.Data
                         foreach(var bookGenre in bookGenres) 
                         { 
                             context.BookGenres.Add(bookGenre);
+                        }
+
+                        await context.SaveChangesAsync();
+                    }
+
+                    if(!context.DeliveryMethods.Any())
+                    {
+                        var deliveryMethodsData = File.ReadAllText("D:/Users/filip/Bookshop/BookshopServer/Data/SeedData/delivery_methods.json");
+
+                        var deliveryMethods = JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryMethodsData);
+
+                        foreach(var deliveryMethod in deliveryMethods)
+                        {
+                            context.DeliveryMethods.Add(deliveryMethod);
                         }
 
                         await context.SaveChangesAsync();

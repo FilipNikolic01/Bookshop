@@ -1,0 +1,26 @@
+[
+  {
+    "ShortName": "AKS",
+    "Description": "“AKS Express Kurir” je kompanija nastala 2004. godine čija je osnovna delatnost “prikupljanje prevoz i isporuka pošiljki”. Osnovana domaćim kapitalom, a zahvaljujući profesionalnosti i zalaganju svih zaposlenih “AKS Express Kurir” je jedna od vodećih kompanija za paketnu dostavu u Srbiji danas.",
+    "DeliveryTime": "2-5 Dana",
+    "Price": 200
+  },
+  {
+    "ShortName": "D Express",
+    "Description": "Kompanija “Dexpress” je ekspresna kurirska služba, koja obavlja kurirsku dostavu pošiljaka. Radni kolektiv čini 1.200 prvenstveno mladih ljudi, stručnjaka iz različitih oblasti.",
+    "DeliveryTime": "1-2 Dana",
+    "Price": 200
+  },
+  {
+    "ShortName": "City Express",
+    "Description": "City Express doo predstavlja lidera za dostavu pošiljaka po principu „od vrata do vrata za 24 sata“ na celoj teritoriji Srbije.",
+    "DeliveryTime": "1 Dan",
+    "Price": 300
+  },
+  {
+    "ShortName": "BexExpress",
+    "Description": "BexExpress kurirska služba osnovana je 2010. godine i za kratko vreme uspela je da osvoji vodeće mesto na tržištu privatnih kurirskih službi. Tokom višegodišnjeg uspešnog poslovanja izgradili smo snažnu reputaciju i postali prvi izbor za mnoge klijente. Sa preko 1200 zaposlenih I impresivnom flotom od preko 900 dostavnih vozila, garantujemo pouzdanost i efikasnost u svakoj pošiljci.",
+    "DeliveryTime": "5-7 Dana",
+    "Price": 0
+  }
+]
