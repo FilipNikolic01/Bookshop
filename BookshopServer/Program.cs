@@ -89,6 +89,8 @@ app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
 app.UseHttpsRedirection();
 
+app.UseCors("CorsPolicy");
+
 app.UseAuthentication();
 
 app.UseAuthorization();
