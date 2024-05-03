@@ -34,7 +34,7 @@ namespace BookshopServer.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Publisher>> GetPublisher(int id)
+        public async Task<ActionResult<PublisherDto>> GetPublisher(int id)
         {
             var publisher = await _publisherRepository.GetByIdAsync(id);
 

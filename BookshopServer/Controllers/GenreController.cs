@@ -33,7 +33,7 @@ namespace BookshopServer.Controllers
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof (ApiResponse), StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<Genre>> GetGenre(int id)
+        public async Task<ActionResult<GenreDto>> GetGenre(int id)
         {
             var genre = await _genreRepository.GetByIdAsync(id);
 

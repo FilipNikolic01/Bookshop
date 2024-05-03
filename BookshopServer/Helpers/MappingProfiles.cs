@@ -10,10 +10,14 @@ namespace BookshopServer.Helpers
     {
         public MappingProfiles()
         {
+            CreateMap<Author, AuthorForBookDto>();
+            CreateMap<Genre, GenreForBookDto>();  
+
             CreateMap<Book, BookViewDto>()
+                .ForMember(d => d.PublisherId, o => o.MapFrom(s => s.PublisherId))
                 .ForMember(d => d.Publisher, o => o.MapFrom(s => s.Publisher.Name))
-                .ForMember(d => d.Authors, o => o.MapFrom(s => s.BookAuthors.Select(x => x.Author.FullName).ToList()))
-                .ForMember(d => d.Genres, o => o.MapFrom(s => s.BookGenres.Select(x => x.Genre.Name).ToList()));
+                .ForMember(d => d.Authors, o => o.MapFrom(s => s.BookAuthors.Select(x => x.Author).ToList()))
+                .ForMember(d => d.Genres, o => o.MapFrom(s => s.BookGenres.Select(x => x.Genre).ToList()));
 
             CreateMap<Author, AuthorDto>().ReverseMap();
             CreateMap<Genre, GenreDto>().ReverseMap();

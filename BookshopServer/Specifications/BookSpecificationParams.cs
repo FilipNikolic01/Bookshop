@@ -2,7 +2,7 @@
 {
     public class BookSpecificationParams
     {
-        private const int MaxPageSize = 50;
+        private const int MaxPageSize = 4;
         public int PageIndex { get; set; } = 1;
 
         private int _pageSize = 6;

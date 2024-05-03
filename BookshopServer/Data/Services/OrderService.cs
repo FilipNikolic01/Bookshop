@@ -79,5 +79,12 @@ namespace BookshopServer.Data.Services
 
             return _orderRepository.GetAsync(spec);
         }
+
+        public async Task<Order> UpdateOrderAsync(Order order)
+        {
+            await _orderRepository.UpdateAsync(order);
+
+            return order;
+        }
     }
 }

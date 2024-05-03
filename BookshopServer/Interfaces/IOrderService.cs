@@ -11,5 +11,6 @@ namespace BookshopServer.Interfaces
         Task<Order> GetOrderByIdAsync(int id, string buyerEmail);
         Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethod, string cartId,
             OrderAddress orderAddress);
+        Task<Order> UpdateOrderAsync(Order order);
     }
 }

@@ -78,5 +78,21 @@ namespace BookshopServer.Controllers
 
             return Ok(order);
         }
+
+        [Authorize(Roles = UserRoles.Admin)]
+        [HttpPatch("{id}")]
+        public async Task<ActionResult<Order>> UpdateOrder(int id, UpdateOrderStatusDto updateOrderStatusDto)
+        {
+            var order = await _orderService.GetOrderByIdAsync(id);
+
+            if (order == null) 
+                return NotFound(new ApiResponse(404));
+
+            order.Status = updateOrderStatusDto.Status;
+
+            await _orderService.UpdateOrderAsync(order);
+
+            return Ok(order);
+        }
     }
 }
