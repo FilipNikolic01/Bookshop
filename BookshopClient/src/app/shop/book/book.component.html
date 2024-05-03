@@ -1,0 +1,13 @@
+<div class="card h-100 shadow-sm">
+  <img src="{{ book.pictureURL }}" alt="{{book.title}" class="img-fluid" />
+  <div class="card-body d-flex-column">
+    <a routerLink="/shop/{{book.id}}" style="text-decoration: none">
+      <h6 class="text-uppercase">{{ book.title }}</h6>
+    </a>
+    <span class="mb-5">{{ book.price | currency }}</span>
+    <div class="btn-group mt-2">
+      <button type="button" class="btn btn-outline-secondary"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+      <button type="button" class="btn btn-outline-secondary" routerLink="/shop/{{book.id}}">View</button>
+    </div>
+  </div>
+</div>
