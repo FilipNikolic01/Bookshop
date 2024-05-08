@@ -30,9 +30,7 @@ namespace BookshopServer.Dtos
 
         public int QuantityInStock { get; set; }
 
-        public int PublisherId { get; set; }
-
-        public string Publisher { get; set; }
+        public PublisherForBookDto Publisher { get; set; }
 
         public ICollection<AuthorForBookDto> Authors { get; set; }
 

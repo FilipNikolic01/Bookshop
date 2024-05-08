@@ -8,7 +8,7 @@
         <div *ngFor="let author of book.authors">
             <a routerLink="/shop/authors/{{author.id}}">{{author.fullName}}</a>
         </div>
-        <a routerLink="/shop/publishers/{{book.publisherId}}">{{book.publisher}}</a>
+        <a routerLink="/shop/publishers/{{book.publisher.id}}">{{book.publisher.name}}</a>
         <div *ngFor="let genre of book.genres">
             <a routerLink="/shop/genres/{{genre.id}}">{{genre.name}}</a>
         </div>

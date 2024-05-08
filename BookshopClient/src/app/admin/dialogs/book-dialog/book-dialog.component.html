@@ -1,0 +1,112 @@
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje knjige</h3>
+    <h3 mat-dialog-title *ngIf="flag == 2">Ažuriranje knjige: {{book.title}}</h3>
+    <h3 mat-dialog-title *ngIf="flag == 3">Brisanje knjige: {{book.title}}</h3>
+
+    <form class="mat-dialog-content" #formControl="ngForm">
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="ISBN" name="isbn" [disabled]="flag==3" [(ngModel)]="book.isbn" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Naslov" name="Naslov" [disabled]="flag==3" [(ngModel)]="book.title" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Opis" name="Opis" [disabled]="flag==3" [(ngModel)]="book.description" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Slika" name="Slika" [disabled]="flag==3" [(ngModel)]="book.pictureURL" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Izdanje" name="Izdanje" [disabled]="flag==3" [(ngModel)]="book.edition" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput [matDatepicker]="publicationDate" placeholder="Datum izdavanja" name="publicationDate" [disabled]="flag==3" [(ngModel)]="book.publicationDate" required />
+                <mat-datepicker-toggle matSuffix [for]="publicationDate"></mat-datepicker-toggle>
+                <mat-datepicker #publicationDate></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Jezik" name="Jezik" [disabled]="flag==3" [(ngModel)]="book.language" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Format" name="Format" [disabled]="flag==3" [(ngModel)]="book.format" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="BrojStrana" name="BrojStrana" [disabled]="flag==3" [(ngModel)]="book.pages" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Cena" name="Cena" [disabled]="flag==3" [(ngModel)]="book.price" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <input matInput placeholder="Stanje" name="Stanje" [disabled]="flag==3" [(ngModel)]="book.quantityInStock" required />
+            </mat-form-field>
+        </div>
+
+        <div class="form">
+            <mat-form-field class="form-field">
+                <mat-select placeholder="Izdavač" name="Izdavač" [disabled]="flag==3" [(ngModel)]="book.publisher" required>
+                    <mat-option *ngFor="let publisher of publishers" [value]="publisher">
+                        {{publisher.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+           </div>
+
+       <div class="form">
+        <mat-form-field class="form-field">
+            <mat-select multiple placeholder="Autori" name="Autori" [disabled]="flag==3" [(ngModel)]="book.authors" required>
+                <mat-option *ngFor="let author of authors" [value]="author">
+                    {{author.fullName}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+       </div>
+
+       <div class="form">
+        <mat-form-field class="form-field">
+            <mat-select multiple placeholder="Zanrovi" name="Zanrovi" [disabled]="flag==3" [(ngModel)]="book.genres" required>
+                <mat-option *ngFor="let genre of genres" [value]="genre">
+                    {{genre.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+       </div>
+
+    </form>
+
+    <div class="mat-dialog-actions form-field">
+        <button mat-raised-button color="accent" *ngIf="flag == 1" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="addBook()">Sačuvaj</button>
+        <button mat-raised-button color="accent" *ngIf="flag == 2" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="updateBook()">Modifikuj</button>
+        <button mat-raised-button color="warn" (click)="cancel()">Poništi</button>
+    </div>
+</div>

@@ -1,9 +1,5 @@
-import { IAuthor } from "./author"
-import { IGenre } from "./genre"
-import { IPublisher } from "./publisher"
-
-export interface IBook {
-    id: number 
+export interface IBookCreate {
+    id: number
     isbn: string
     title: string
     description: string
@@ -15,7 +11,7 @@ export interface IBook {
     pages: number
     price: number
     quantityInStock: number
-    publisher: IPublisher
-    authors: IAuthor[]
-    genres: IGenre[]
+    publisherId: number
+    authorIds: number[]
+    genreIds: number[]
   }

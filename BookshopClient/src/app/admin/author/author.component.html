@@ -1,1 +1,55 @@
-<p>author works!</p>
+<mat-toolbar color="accent">
+    <span class="title-center">Autor</span>
+</mat-toolbar>
+
+  <div class="container mat-elavation-z8">
+    <mat-form-field>
+      <input matInput placeholder="Search Authors" name="Search Authors" (keyup)="applyFilter($event)"/>
+    </mat-form-field>
+    <mat-table #table [dataSource]="dataSource" class="mat-cell" matSort>
+      <!--ID-->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+      </ng-container>
+      <!--FullName-->
+      <ng-container matColumnDef="fullName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Ime i prezime</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.fullName }}</mat-cell>
+      </ng-container>
+      <!-- ProfilePicture -->
+      <ng-container matColumnDef="profilePictureURL">
+        <mat-header-cell *matHeaderCellDef>Profilna slika</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.profilePictureURL }}</mat-cell>
+      </ng-container>
+      <!-- Biography -->
+      <ng-container matColumnDef="biography">
+        <mat-header-cell *matHeaderCellDef>Biografija</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.biography }}</mat-cell>
+      </ng-container>
+      <!-- Action Buttons -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="accent" (click)="openDialog(1)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index">
+          <button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.fullName, row.profilePictureURL, row.biography)">
+            <mat-icon color="primary" aria-label="Edit">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="openDialog(3, row.id, row.fullName, row.profilePictureURL, row.biography)">
+            <mat-icon color= "warn" aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        style="cursor: pointer;"
+        *matRowDef="let row; columns: displayedColumns">
+      </mat-row>
+    </mat-table>
+
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+  </div>

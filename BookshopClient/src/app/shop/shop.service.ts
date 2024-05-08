@@ -7,12 +7,13 @@ import { map } from 'rxjs';
 import { ShopParams } from '../shared/models/shopParams';
 import { IBook } from '../shared/models/book';
 import { IPublisher } from '../shared/models/publisher';
+import { apiUrl } from 'src/constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopService {
-  baseUrl = 'https://localhost:7006/api/';
+  baseUrl = apiUrl;
 
   constructor(private httpClient: HttpClient) { }
 

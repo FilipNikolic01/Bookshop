@@ -1,0 +1,32 @@
+<div class="container">
+    <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje autora</h3>
+    <h3 mat-dialog-title *ngIf="flag == 2">Ažuriranje autora: {{author.fullName}}</h3>
+    <h3 mat-dialog-title *ngIf="flag == 3">Brisanje autora: {{author.fullName}}</h3>
+
+    <form class="mat-dialog-content" #formControl="ngForm">
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Ime i prezime" name="Ime i prezime" [disabled]="flag==3" [(ngModel)]="author.fullName" required />
+        </mat-form-field>
+       </div>
+
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Profilna slika" name="Profilna slika" [disabled]="flag==3" [(ngModel)]="author.profilePictureURL" required />
+        </mat-form-field>
+       </div>
+
+       <div class="form">
+        <mat-form-field class="form-field">
+            <input matInput placeholder="Biografija" name="Biografija" [disabled]="flag==3" [(ngModel)]="author.biography" required />
+        </mat-form-field>
+       </div>
+    </form>
+
+    <div class="mat-dialog-actions form-field">
+        <button mat-raised-button color="primary" *ngIf="flag == 1" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="addAuthor()">Sačuvaj</button>
+        <button mat-raised-button color="primary" *ngIf="flag == 2" type="submit" mat-dialog-close="1" [disabled]="!formControl.valid" (click)="updateAuthor()">Modifikuj</button>
+        <button mat-raised-button color="primary" *ngIf="flag == 3" mat-dialog-close="1" (click)="deleteAuthor()">Obriši</button>
+        <button mat-raised-button color="warn" (click)="cancel()">Poništi</button>
+    </div>
+</div>

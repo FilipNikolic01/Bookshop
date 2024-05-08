@@ -1,1 +1,122 @@
-<p>book works!</p>
+<mat-toolbar color="accent">
+    <span class="title-center">Knjiga</span>
+</mat-toolbar>
+
+  <div class="container mat-elavation-z8">
+    <mat-form-field>
+      <input matInput placeholder="Pretraži knjige..." name="Book Search" (keyup)="applyFilter($event)"/>
+    </mat-form-field>
+    <table mat-table #table [dataSource]="dataSource" class="mat-cell" matSort>
+      <!--ID-->
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.id }}</mat-cell>
+      </ng-container>
+      <!--ISBN-->
+      <ng-container matColumnDef="isbn">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ISBN</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.isbn }}</mat-cell>
+      </ng-container>
+      <!-- Title -->
+      <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef>Naslov</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.title }}</mat-cell>
+      </ng-container>
+      <!-- Description -->
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Opis</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="scrollable">
+                {{row.description}}
+            </div>
+        </mat-cell>
+      </ng-container>
+      <!-- Picture -->
+      <ng-container matColumnDef="pictureURL">
+        <mat-header-cell *matHeaderCellDef>Slika</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.pictureURL }}</mat-cell>
+      </ng-container>
+      <!-- Edition -->
+      <ng-container matColumnDef="edition">
+        <mat-header-cell *matHeaderCellDef>Izdanje</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.edition }}</mat-cell>
+      </ng-container>
+      <!-- Datum Izdavanja -->
+      <ng-container matColumnDef="publicationDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Datum Izdavanja</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.publicationDate | date:'dd-MM-yyyy' }}</mat-cell>
+      </ng-container>
+      <!-- Language -->
+      <ng-container matColumnDef="language">
+        <mat-header-cell *matHeaderCellDef>Jezik</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.language }}</mat-cell>
+      </ng-container>
+      <!-- Format -->
+      <ng-container matColumnDef="format">
+        <mat-header-cell *matHeaderCellDef>Format</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.format }}</mat-cell>
+      </ng-container>
+      <!-- Pages -->
+      <ng-container matColumnDef="pages">
+        <mat-header-cell *matHeaderCellDef>Broj strana</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.pages }}</mat-cell>
+      </ng-container>
+      <!-- Price -->
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef>Cena</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.price | currency }}</mat-cell>
+      </ng-container>
+      <!-- QuantityInStock -->
+      <ng-container matColumnDef="quantityInStock">
+        <mat-header-cell *matHeaderCellDef>Stanje</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.quantityInStock }}</mat-cell>
+      </ng-container>
+      <!-- Publisher -->
+      <ng-container matColumnDef="publisher">
+        <mat-header-cell *matHeaderCellDef>Izdavač</mat-header-cell>
+        <mat-cell *matCellDef="let row">{{ row.publisher.name }}</mat-cell>
+      </ng-container>
+      <!-- Authors -->
+      <ng-container matColumnDef="authors">
+        <mat-header-cell *matHeaderCellDef>Autori</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="row">
+                <span *ngFor="let author of row.authors">{{author.fullName}}</span>
+            </div>
+        </mat-cell>
+      </ng-container>
+      <!-- Genres -->
+      <ng-container matColumnDef="genres">
+        <mat-header-cell *matHeaderCellDef>Žanrovi</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="row">
+                <span *ngFor="let genre of row.genres">{{genre.name}}</span>
+            </div>
+        </mat-cell>
+      </ng-container>
+      <!-- Action Buttons -->
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="accent" (click)="openDialog(1)">
+            <mat-icon>add</mat-icon>
+          </button>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index">
+          <button mat-icon-button color="primary" (click)="openDialog(2, row.id, row.isbn, row.title, row.description, row.pictureURL, row.edition, row.publicationDate, row.language, row.format, row.pages, row.price, row.quantityInStock, row.publisher, row.authors, row.genres)">
+            <mat-icon color="primary" aria-label="Edit">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="openDialog(3, row.id, row.isbn, row.title, row.description, row.pictureURL, row.edition, row.publicationDate, row.language, row.format, row.pages, row.price, row.quantityInStock, row.publisher, row.authors, row.genres)">
+            <mat-icon color= "warn" aria-label="Delete">delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        style="cursor: pointer;"
+        *matRowDef="let row; columns: displayedColumns">
+      </mat-row>
+    </table>
+
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+  </div>
