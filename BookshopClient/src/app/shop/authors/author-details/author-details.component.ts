@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IAuthor } from 'src/app/shared/models/author';
 import { ShopService } from '../../shop.service';
 import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbService } from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-author-details',
@@ -11,7 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 export class AuthorDetailsComponent implements OnInit {
   author!: IAuthor;
 
-  constructor(private shopService: ShopService, private activatiedRoute: ActivatedRoute) {}
+  constructor(private shopService: ShopService, private activatiedRoute: ActivatedRoute, private breadcrumbService: BreadcrumbService) {
+    breadcrumbService.set('@authorDetails', ' ');
+  }
 
   ngOnInit(): void {
     this.getAuthor(+ this.activatiedRoute.snapshot.paramMap.get('id')!);
@@ -19,7 +22,10 @@ export class AuthorDetailsComponent implements OnInit {
 
   getAuthor(id: number) {
     this.shopService.getAuthor(id).subscribe({
-      next: response => this.author = response,
+      next: response => {
+        this.author = response;
+        this.breadcrumbService.set('@authorDetails', this.author.fullName);
+      },
       error: error => console.log(error)
     })
   }

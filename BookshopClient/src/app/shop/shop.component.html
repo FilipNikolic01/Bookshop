@@ -1,15 +1,16 @@
-<div class="container">
+<div class="container mt-3">
     <div class="row">
 
         <section class="col-md-3">
-            <h5 class="text-warning ms-3">Sortiraj</h5>
-            <select class="form-select mb-3" (change)="onSortSelected($any($event.target).value)">
+          <ng-container *ngIf="authors.length > 0 && genres.length > 0">
+            <h3 class="text-warning ms-3 mt-4 mb-3">Sortiraj</h3>
+            <select class="form-select mb-4" (change)="onSortSelected($any($event.target).value)">
                 <option *ngFor="let sort of sortOptions" [value]="sort.value">
                   {{sort.name}}
                 </option>
             </select>
 
-            <h5 class="text-warning ms-3">Žanrovi</h5>
+            <h3 class="text-warning ms-3">Žanrovi</h3>
             <ul class="list-group my-3">
                 <li class="list-group-item" 
                 *ngFor="let genre of genres" aria-current="true"
@@ -20,7 +21,7 @@
                 </li>
               </ul>
 
-              <h5 class="text-warning ms-3">Pisci</h5>
+              <h3 class="text-warning ms-3">Pisci</h3>
               <ul class="list-group my-3">
                 <li class="list-group-item" *ngFor="let author of authors" aria-current="true"
                 [class.active]="author.id === shopParams.authorId"
@@ -29,6 +30,7 @@
                   {{author.fullName}}
                 </li>
               </ul>
+            </ng-container>
         </section>
 
         <section class="col-md-9">
@@ -40,7 +42,7 @@
                 [pageSize]="shopParams.pageSize">
               </app-paging-header>
 
-                <div class="form-inline mt-2">
+                <div class="form-inline" *ngIf="books!.length > 0">
                     <div class="input-group">
                         <input (keyup.enter)="onSearch()" class="form-control mt-2 me-2" #search style="width: 300px; height: fit-content;" placeholder=" Pretraži knjige..." type="text">
                         <button (click)="onSearch()" class="btn btn-outline-primary my-2"> Pretraži</button>

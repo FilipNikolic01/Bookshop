@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IPublisher } from 'src/app/shared/models/publisher';
 import { ShopService } from '../../shop.service';
 import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbService } from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-publisher-details',
@@ -11,7 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 export class PublisherDetailsComponent implements OnInit {
   publisher!: IPublisher
 
-  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute) {}
+  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private breadcrumbService: BreadcrumbService) {
+    breadcrumbService.set('@publisherDetails', ' ');
+  }
 
   ngOnInit(): void {
     this.getPublisher(+ this.activatedRoute.snapshot.paramMap.get('id')!);
@@ -19,7 +22,10 @@ export class PublisherDetailsComponent implements OnInit {
 
   getPublisher(id: number) {
     this.shopService.getPublisher(id).subscribe({
-      next: response => this.publisher = response,
+      next: response => {
+        this.publisher = response;
+        this.breadcrumbService.set('@publisherDetails', this.publisher.name);
+      },
       error: error => console.log(error)
     })
   }

@@ -8,10 +8,10 @@ import { PublisherDetailsComponent } from './publishers/publisher-details/publis
 
 const routes: Routes = [
   {path: '', component: ShopComponent},
-  {path: ':id', component: BookDetailsComponent},
-  {path: 'authors/:id', component: AuthorDetailsComponent},
-  {path: 'genres/:id', component: GenreDetailsComponent},
-  {path: 'publishers/:id', component: PublisherDetailsComponent}
+  {path: ':id', component: BookDetailsComponent, data: {breadcrumb: {alias: 'bookDetails'}}},
+  {path: 'authors/:id', component: AuthorDetailsComponent, data: {breadcrumb: {alias: 'authorDetails'}}},
+  {path: 'genres/:id', component: GenreDetailsComponent, data: {breadcrumb: {alias: 'genreDetails'}}},
+  {path: 'publishers/:id', component: PublisherDetailsComponent, data: {breadcrumb: {alias: 'publisherDetails'}}}
 ];
 
 @NgModule({

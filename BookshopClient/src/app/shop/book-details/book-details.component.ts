@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IBook } from 'src/app/shared/models/book';
 import { ShopService } from '../shop.service';
 import { ActivatedRoute } from '@angular/router';
+import { BreadcrumbService } from 'xng-breadcrumb';
 
 @Component({
   selector: 'app-book-details',
@@ -11,7 +12,9 @@ import { ActivatedRoute } from '@angular/router';
 export class BookDetailsComponent implements OnInit {
   book!: IBook
 
-  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute) {}
+  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private breadcrumbService: BreadcrumbService) {
+    breadcrumbService.set('@bookDetails', ' ');
+  }
 
   ngOnInit(): void {
     this.getBook(+ this.activatedRoute.snapshot.paramMap.get('id')!);
@@ -19,7 +22,10 @@ export class BookDetailsComponent implements OnInit {
 
   getBook(id: number) {
     this.shopService.getBook(id).subscribe({
-      next: response => this.book = response,
+      next: response => {
+        this.book = response;
+        this.breadcrumbService.set('@bookDetails', this.book.title);
+      },
       error: error => console.log(error)
     });
   }
