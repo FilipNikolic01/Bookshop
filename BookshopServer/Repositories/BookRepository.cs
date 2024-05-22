@@ -23,7 +23,7 @@ namespace BookshopServer.Repositories
                 Description = bookCreateAndUpdateDto.Description,
                 PictureURL = bookCreateAndUpdateDto.PictureURL,
                 Edition = bookCreateAndUpdateDto.Edition,
-                PublicationDate = bookCreateAndUpdateDto.PublicationDate,
+                PublicationDate = DateOnly.FromDateTime(bookCreateAndUpdateDto.PublicationDate),
                 Language = bookCreateAndUpdateDto.Language,
                 Format = bookCreateAndUpdateDto.Format,
                 Pages = bookCreateAndUpdateDto.Pages,
@@ -68,7 +68,7 @@ namespace BookshopServer.Repositories
                 dbBook.Description = bookCreateAndUpdateDto.Description;
                 dbBook.PictureURL = bookCreateAndUpdateDto.PictureURL;
                 dbBook.Edition = bookCreateAndUpdateDto.Edition;
-                dbBook.PublicationDate = bookCreateAndUpdateDto.PublicationDate;
+                dbBook.PublicationDate = DateOnly.FromDateTime(bookCreateAndUpdateDto.PublicationDate);
                 dbBook.Language = bookCreateAndUpdateDto.Language;
                 dbBook.Format = bookCreateAndUpdateDto.Format;
                 dbBook.Pages = bookCreateAndUpdateDto.Pages;

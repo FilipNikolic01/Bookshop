@@ -10,6 +10,8 @@ const routes: Routes = [
   {path: 'not-found', component: NotFoundComponent, data: {breadcrumb: 'Not Found'}},
   {path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data: {breadcrumb: 'Prodavnica'}},
   {path: 'admin', loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule)},
+  {path: 'cart', loadChildren: () => import('./shopping-cart/shopping-cart.module').then(mod => mod.ShoppingCartModule), data:{breadcrumb: 'Korpa'}},
+  {path: 'checkout', loadChildren: () => import('./checkout/checkout.module').then(mod => mod.CheckoutModule), data: {breadcrumb: 'Plaćanje'}},
   {path: '**', redirectTo: 'not-found', pathMatch: 'full'}
 ];
 

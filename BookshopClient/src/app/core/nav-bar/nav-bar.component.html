@@ -6,9 +6,9 @@
         <a class="p-2" href="#">Kontakt</a>
     </nav>
     <div class="d-flex align-items-center">
-        <a class="position-relative">
+        <a routerLink="/cart" class="position-relative">
             <i class="fa fa-shopping-cart fa-2x me-5 text-dark"></i>
-            <div class="cart-no">5</div>
+            <div *ngIf="(shoppingCart$ | async) as shoppingCart" class="cart-no">{{shoppingCart.items.length}}</div>
         </a>
         <a class="btn btn-outline-secondary me-2">Prijava</a>
         <a class="btn btn-outline-secondary me-3">Registracija</a>

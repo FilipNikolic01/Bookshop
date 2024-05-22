@@ -1,0 +1,20 @@
+<div class="bg-light px-4 py-3 text-uppercase fw-bold">
+    Pregled i plaćanje
+</div>
+<div class="p-4">
+    <p class="fst-italic mb-4">Cena dostave će biti dodata u zavisnosti od odabira dostavljača</p>
+    <ul class="list-unstyled mb-4" *ngIf="(shoppingCartTotal$ | async) as shoppingCartTotal">
+        <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">Ukupno</strong>
+            <strong>{{shoppingCartTotal.subtotal | currency}}</strong>
+        </li>
+        <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="text-muted">Način dostave</strong>
+            <strong>{{shoppingCartTotal.shipping | currency}}</strong>
+        </li>
+        <li class="d-flex justify-content-between py-3 border-bottom">
+            <strong class="fw-bolder fs-4">Ukupno</strong>
+            <strong>{{shoppingCartTotal.total | currency}}</strong>
+        </li>
+    </ul>
+</div>

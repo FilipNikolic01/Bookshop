@@ -32,7 +32,7 @@ namespace BookshopServer.Dtos
 
         [Display(Name = "Datum izdavanja")]
         [Required(ErrorMessage = "Datum izdavanja je obavezan")]
-        public DateOnly PublicationDate { get; set; }
+        public DateTime PublicationDate { get; set; }
 
         [Display(Name = "Pismo/Jezik")]
         [Required(ErrorMessage = "Pismo/Jezik je obavezno")]
