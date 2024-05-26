@@ -1,0 +1,17 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-md-3">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form-signing">
+            <h1 class="h3 mb-3 fw-normal">Registracija korisnika</h1>
+
+            <app-text-input [formControl]="$any(registerForm.controls['displayName'])" [label]="'Korisničko ime'"></app-text-input>
+            <app-text-input [formControl]="$any(registerForm.controls['email'])" [label]="'Email Adresa'"></app-text-input>
+            <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'Lozinka'" [type]="'password'"></app-text-input>
+
+            <ul class="text-danger list-unstyled" *ngIf="errors">
+                <li *ngFor="let error of errors">{{error}}</li>
+            </ul>
+        
+            <button  class="btn btn-primary w-100 py-2" type="submit">Registracija</button>
+        </form>   
+    </div>
+</div>

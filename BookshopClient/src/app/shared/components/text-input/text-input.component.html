@@ -1,0 +1,18 @@
+<div class="form-floating">
+    <input
+        type="{{type}}"
+        [formControl]="control"
+        placeholder="{{label}}"
+        class="form-control"
+        [ngClass]="(control.touched) ? control.invalid ? 'is-invalid' : 'is-valid' : null"
+    >
+    <div *ngIf="control && control.status === 'PENDING'" class="fa fa-spinner fa-spin loader"></div>
+    <label>{{label}}</label>
+    <div class="invalid-feedback" *ngIf="(control && !control.valid && control.touched)">
+        <span *ngIf="control.errors?.['required']">{{label}} je obavezno polje</span>
+        <span *ngIf="control.errors?.['pattern']">Email adresa nije ispravnog formata</span>
+    </div>
+    <div class="invalid-feedback d-block" *ngIf="(control && !control.valid && control.dirty)">
+        <span *ngIf="control.errors?.['emailExists']">Uneta Email adresa već postoji</span>
+    </div>
+</div>

@@ -47,11 +47,14 @@ namespace BookshopServer.Controllers
 
             var user = await _userManager.FindByEmailAsync(email);
 
+            var role = await _userManager.GetRolesAsync(user);
+
             return new UserDto
             {
                 Email = user.Email,
                 Token = await _tokenService.CreateTokenAsync(user),
-                DisplayName = user.DisplayName
+                DisplayName = user.DisplayName,
+                Role = role
             };
         }
 
@@ -105,11 +108,14 @@ namespace BookshopServer.Controllers
             if (!result.Succeeded)
                 return Unauthorized(new ApiResponse(401));
 
+            var role = await _userManager.GetRolesAsync(user);
+
             return new UserDto
             {
                 Email = user.Email,
                 Token = await _tokenService.CreateTokenAsync(user),
-                DisplayName = user.DisplayName
+                DisplayName = user.DisplayName,
+                Role = role
             };
         }
 
@@ -134,11 +140,14 @@ namespace BookshopServer.Controllers
 
             await _userManager.AddToRoleAsync(user, UserRoles.User);
 
+            var role = await _userManager.GetRolesAsync(user);
+
             return new UserDto
             {
                 DisplayName = user.DisplayName,
                 Token = await _tokenService.CreateTokenAsync(user),
                 Email = user.Email,
+                Role = role
             };
 
         }

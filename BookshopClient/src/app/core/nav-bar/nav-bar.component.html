@@ -6,11 +6,53 @@
         <a class="p-2" href="#">Kontakt</a>
     </nav>
     <div class="d-flex align-items-center">
+        <ng-container *ngIf="localStorage.getItem('role') === 'Admin'">
+            <div class="dropdown ms-3 me-5" dropdown>
+                <a class="dropdown-toggle" style="cursor: pointer;" dropdownToggle>
+                    <i class="fa fa-gear"></i> <strong> Upravljanje</strong>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+                    <a routerLink="/admin/books" class="dropdown-item d-flex align-items-center py-2">
+                        <i class="fa fa-solid fa-book me-3"> Knjige</i>
+                    </a>
+                    <a routerLink="/admin/authors" class="dropdown-item d-flex align-items-center py-2">
+                        <i class="fa fa-solid fa-user me-3"> Autori</i>
+                    </a>
+                    <a routerLink="/admin/publishers" class="dropdown-item d-flex align-items-center py-2">
+                        <i class="fa fa-solid fa-print me-3"> Izdavači</i>
+                    </a>
+                    <a routerLink="/admin/genres" class="dropdown-item d-flex align-items-center py-2">
+                        <i class="fa fa-history me-3"> Žanrovi</i>
+                    </a>
+                </div>
+            </div>
+        </ng-container>
         <a routerLink="/cart" class="position-relative">
             <i class="fa fa-shopping-cart fa-2x me-5 text-dark"></i>
             <div *ngIf="(shoppingCart$ | async) as shoppingCart" class="cart-no">{{shoppingCart.items.length}}</div>
         </a>
-        <a class="btn btn-outline-secondary me-2">Prijava</a>
-        <a class="btn btn-outline-secondary me-3">Registracija</a>
+        <ng-container *ngIf="(currentUser$ | async) === null">
+            <a routerLink="/account/login" class="btn btn-outline-secondary me-2">Prijava</a>
+            <a routerLink="/account/register" class="btn btn-outline-secondary me-3">Registracija</a>
+        </ng-container>
+        <ng-container *ngIf="(currentUser$ | async) as currentUser">
+            <div class="dropdown ms-3 me-5" dropdown>
+                <a class="dropdown-toggle" style="cursor: pointer;" dropdownToggle>
+                    <strong>Dobrodošli {{currentUser.displayName}}</strong>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+                    <a routerLink="/cart" class="dropdown-item d-flex align-items-center py-2">
+                        <i class="fa fa-shopping-cart me-3"> Moja korpa</i>
+                    </a>
+                    <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2">
+                        <i class="fa fa-history me-3"> Moje porudžbine</i>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
+                        <i class="fa fa-sign-out me-3"> Odjava</i>
+                    </a>
+                </div>
+            </div>
+        </ng-container>
     </div>
   </div>

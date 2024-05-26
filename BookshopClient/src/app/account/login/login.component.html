@@ -1,0 +1,12 @@
+<div class="d-flex justify-content-center mt-5">
+    <div class="col-md-3">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="form-signing">
+            <h1 class="h3 mb-3 fw-normal">Prijava korisnika</h1>
+
+            <app-text-input [formControl]="$any(loginForm.controls['email'])" [label]="'Email Adresa'"></app-text-input>
+            <app-text-input [formControl]="$any(loginForm.controls['password'])" [label]="'Lozinka'" [type]="'password'"></app-text-input>
+        
+            <button [disabled]="loginForm.invalid" class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+        </form>   
+    </div>
+</div>
