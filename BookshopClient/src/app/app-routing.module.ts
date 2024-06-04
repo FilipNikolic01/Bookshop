@@ -15,13 +15,15 @@ const routes: Routes = [
 
   {path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data: {breadcrumb: 'Prodavnica'}},
 
-  {path: 'admin', canActivate:[RoleGuard], loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule)},
+  {path: 'admin', canActivate:[AuthGuard, RoleGuard], loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule)},
 
   {path: 'cart', loadChildren: () => import('./shopping-cart/shopping-cart.module').then(mod => mod.ShoppingCartModule), data:{breadcrumb: 'Korpa'}},
   
   {path: 'checkout', canActivate:[AuthGuard], loadChildren: () => import('./checkout/checkout.module').then(mod => mod.CheckoutModule), data: {breadcrumb: 'Plaćanje'}},
 
   {path: 'account', loadChildren: () => import('./account/account.module').then(mod => mod.AccountModule), data: {breadcrumb: {skip: true}}},
+
+  {path: 'orders', canActivate:[AuthGuard], loadChildren: () => import('./orders/orders.module').then(mod => mod.OrdersModule), data: {breadcrumb: 'Porudžbine'}},
 
   {path: '**', redirectTo: 'not-found', pathMatch: 'full'}
 ];

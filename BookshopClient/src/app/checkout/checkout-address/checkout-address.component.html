@@ -1,0 +1,40 @@
+<div class="mt-4" [formGroup]="checkoutForm">
+    <div class="d-flex justify-content-between align-items-center">
+        <h4>Adresa za dostavu</h4>
+        <button class="btn btn-outline-success mb-3"
+            (click)="saveUserAddress()"
+            [disabled]="!checkoutForm.get('addressForm')?.valid"
+        >
+            Sačuvaj kao podrazumevanu adresu
+        </button>
+    </div>
+    <div class="row" formGroupName="addressForm">
+        <div class="col-md-6 form-group">
+            <app-text-input [label]="'Ime'" formControlName="firstName"></app-text-input>
+        </div>
+        <div class="col-md-6 form-group">
+            <app-text-input [label]="'Prezime'" formControlName="lastName"></app-text-input>
+        </div>
+        <div class="col-md-6 form-group">
+            <app-text-input [label]="'Ulica'" formControlName="street"></app-text-input>
+        </div>
+        <div class="col-md-6 form-group">
+            <app-text-input [label]="'Grad'" formControlName="city"></app-text-input>
+        </div>
+        <div class="col-md-6 form-group">
+            <app-text-input [label]="'Država'" formControlName="state"></app-text-input>
+        </div>
+        <div class="col-md-6 form-group">
+            <app-text-input [label]="'Poštanski broj'" formControlName="postalCode"></app-text-input>
+        </div>
+    </div>
+</div>
+
+<div class="float-none d-flex justify-content-between flex-column flex-lg-row mb-5">
+    <button class="btn btn-outline-primary" routerLink="/cart">
+        <i class="fa fa-angle-left"></i> Nazad na korpu
+    </button>
+    <button class="btn btn-primary" cdkStepperNext>
+        Način dostave <i class="fa fa-angle-right"></i>
+    </button>
+</div>
