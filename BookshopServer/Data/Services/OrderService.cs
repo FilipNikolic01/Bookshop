@@ -1,4 +1,5 @@
-﻿using BookshopServer.Entities.OrderAggregate;
+﻿using BookshopServer.Entities;
+using BookshopServer.Entities.OrderAggregate;
 using BookshopServer.Interfaces;
 using BookshopServer.Specifications;
 
@@ -8,17 +9,19 @@ namespace BookshopServer.Data.Services
     {
         private readonly IGenericRepository<Order> _orderRepository;
         private readonly IGenericRepository<DeliveryMethod> _deliveryMethodRepository;
-        private readonly IBookRepository _bookRepository;
+        private readonly IGenericRepository<Book> _bookRepository;
         private readonly IShoppingCartRepository _shoppingCartRepository;
+        private readonly IPaymentService _paymentService;
 
         public OrderService(IGenericRepository<Order> orderRepository, IGenericRepository<DeliveryMethod>
-            deliveryMethodRepository, IBookRepository bookRepository,
-            IShoppingCartRepository shoppingCartRepository)
+            deliveryMethodRepository, IGenericRepository<Book> bookRepository,
+            IShoppingCartRepository shoppingCartRepository, IPaymentService paymentService)
         {
             _orderRepository = orderRepository;
             _deliveryMethodRepository = deliveryMethodRepository;
             _bookRepository = bookRepository;
             _shoppingCartRepository = shoppingCartRepository;
+            _paymentService = paymentService;
         }
 
         public async Task<Order> CreateOrderAsync(string buyerEmail, int deliveryMethodId, string cartId, OrderAddress orderAddress)
@@ -38,11 +41,19 @@ namespace BookshopServer.Data.Services
 
             var subtotal = orderItems.Sum(orderItem => orderItem.Price * orderItem.Quantity);
 
-            var order = new Order(orderItems, buyerEmail, orderAddress, deliveryMethod, subtotal);
+            var spec = new OrderByPaymentIntentIdSpecification(cart.PaymentIntentId);
+            var existingOrder = await _orderRepository.GetEntityWithSpecAsync(spec);
+
+            if (existingOrder != null)
+            {
+                await _orderRepository.DeleteAsync(existingOrder);
+                await _paymentService.CreateOrUpdatePaymentIntent(cartId);
+            }
+
+            var order = new Order(orderItems, buyerEmail, orderAddress, deliveryMethod, subtotal,
+                cart.PaymentIntentId);
 
             await _orderRepository.AddAsync(order);
-
-            await _shoppingCartRepository.DeleteShoppingCartAsync(cartId);
 
             return order;
         }

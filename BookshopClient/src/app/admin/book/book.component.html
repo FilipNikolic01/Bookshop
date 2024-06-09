@@ -64,7 +64,7 @@
       <!-- Price -->
       <ng-container matColumnDef="price">
         <mat-header-cell *matHeaderCellDef>Cena</mat-header-cell>
-        <mat-cell *matCellDef="let row">{{ row.price | currency }}</mat-cell>
+        <mat-cell *matCellDef="let row">{{ row.price | currency:"RSD":"symbol" }}</mat-cell>
       </ng-container>
       <!-- QuantityInStock -->
       <ng-container matColumnDef="quantityInStock">

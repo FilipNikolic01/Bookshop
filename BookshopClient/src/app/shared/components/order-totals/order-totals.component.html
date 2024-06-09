@@ -6,15 +6,15 @@
     <ul class="list-unstyled mb-4" *ngIf="(shoppingCartTotal$ | async) as shoppingCartTotal">
         <li class="d-flex justify-content-between py-3 border-bottom">
             <strong class="text-muted">Ukupno</strong>
-            <strong>{{shoppingCartTotal.subtotal | currency}}</strong>
+            <strong>{{shoppingCartTotal.subtotal | currency:"RSD":"symbol"}}</strong>
         </li>
         <li class="d-flex justify-content-between py-3 border-bottom">
             <strong class="text-muted">Način dostave</strong>
-            <strong>{{shoppingCartTotal.shipping | currency}}</strong>
+            <strong>{{shoppingCartTotal.shipping | currency:"RSD":"symbol"}}</strong>
         </li>
         <li class="d-flex justify-content-between py-3 border-bottom">
             <strong class="fw-bolder fs-4">Ukupno</strong>
-            <strong>{{shoppingCartTotal.total | currency}}</strong>
+            <strong>{{shoppingCartTotal.total | currency:"RSD":"symbol"}}</strong>
         </li>
     </ul>
 </div>

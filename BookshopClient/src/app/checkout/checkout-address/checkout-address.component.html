@@ -3,7 +3,7 @@
         <h4>Adresa za dostavu</h4>
         <button class="btn btn-outline-success mb-3"
             (click)="saveUserAddress()"
-            [disabled]="!checkoutForm.get('addressForm')?.valid"
+            [disabled]="!checkoutForm.get('addressForm')?.valid || !checkoutForm.get('addressForm')?.dirty"
         >
             Sačuvaj kao podrazumevanu adresu
         </button>
@@ -34,7 +34,7 @@
     <button class="btn btn-outline-primary" routerLink="/cart">
         <i class="fa fa-angle-left"></i> Nazad na korpu
     </button>
-    <button class="btn btn-primary" cdkStepperNext>
+    <button [disabled]="checkoutForm.get('addressForm')?.invalid" class="btn btn-primary" cdkStepperNext>
         Način dostave <i class="fa fa-angle-right"></i>
     </button>
 </div>

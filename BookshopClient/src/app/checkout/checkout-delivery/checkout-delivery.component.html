@@ -10,7 +10,7 @@
                 (click)="setShippingPrice(method)"
             >
             <label for="{{method.id}}" class="custom-control-label">
-                <strong>{{method.shortName}} - {{method.price | currency}}</strong>
+                <strong>{{method.shortName}} - {{method.price | currency:"RSD":"symbol"}}</strong>
                 <br>
                 <span class="label-description">{{method.description}}</span>
             </label>
@@ -22,7 +22,7 @@
     <button class="btn btn-outline-primary" cdkStepperPrevious>
         <i class="fa fa-angle-left"></i> Adresa dostave
     </button>
-    <button class="btn btn-primary" cdkStepperNext>
+    <button [disabled]="checkoutForm.get('deliveryForm')?.invalid" class="btn btn-primary" cdkStepperNext>
         Pregled porudžbine <i class="fa fa-angle-right"></i>
     </button>
 </div>

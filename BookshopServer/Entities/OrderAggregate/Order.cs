@@ -8,13 +8,14 @@
         }
 
         public Order(IReadOnlyList<OrderItem> orderItems, string buyerEmail, OrderAddress orderAddress,
-            DeliveryMethod deliveryMethod, decimal subtotal) 
+            DeliveryMethod deliveryMethod, decimal subtotal, string paymentIntentId) 
         {
             OrderItems = orderItems;
             BuyerEmail = buyerEmail;
             OrderAddress = orderAddress;
             DeliveryMethod = deliveryMethod;
             Subtotal = subtotal;
+            PaymentIntentId = paymentIntentId;
         }
 
         public string BuyerEmail { get; set; }

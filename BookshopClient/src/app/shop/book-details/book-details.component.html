@@ -23,7 +23,7 @@
                     <h3 class="box-title mt-3">O knjizi</h3>
                     <p>{{book.description}}</p>
                     <h2 class="mt-3">
-                        {{book.price | currency}}
+                        {{book.price | currency:"RSD":"symbol"}}
                     </h2>
                     <div class="d-flex justify-content-start align-items-center">
                         <i (click)="decrementQuantity()" class="fa fa-minus-circle text-warning me-2" style="cursor: pointer; font-size: 2em;"></i>
@@ -59,42 +59,6 @@
                                 <tr>
                                     <td>ISBN</td>
                                     <td>{{book.isbn}}</td>
-                                </tr>
-                                <tr>
-                                    <td>Upholstery Included</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td>Upholstery Type</td>
-                                    <td>Cushion</td>
-                                </tr>
-                                <tr>
-                                    <td>Head Support</td>
-                                    <td>No</td>
-                                </tr>
-                                <tr>
-                                    <td>Suitable For</td>
-                                    <td>Study&amp;Home Office</td>
-                                </tr>
-                                <tr>
-                                    <td>Adjustable Height</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td>Model Number</td>
-                                    <td>F01020701-00HT744A06</td>
-                                </tr>
-                                <tr>
-                                    <td>Armrest Included</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td>Care Instructions</td>
-                                    <td>Handle With Care,Keep In Dry Place,Do Not Apply Any Chemical For Cleaning.</td>
-                                </tr>
-                                <tr>
-                                    <td>Finish Type</td>
-                                    <td>Matte</td>
                                 </tr>
                             </tbody>
                         </table>

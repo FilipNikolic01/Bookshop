@@ -20,11 +20,22 @@ export class ShoppingCartService {
 
   constructor(private httpClient: HttpClient) { }
 
+  createPaymentIntent() {
+    return this.httpClient.post<any>(this.baseUrl + 'payment/' + this.getCurrentShoppingCartValue()?.id, {})
+      .pipe(
+        map((shoppingCart: IShoppingCart) => {
+          this.shoppingCartSource.next(shoppingCart);
+          console.log(this.getCurrentShoppingCartValue());
+        })
+      );
+  }
+
   getShoppingCart(id: string) {
     return this.httpClient.get<IShoppingCart>(this.baseUrl + 'cart?cartId=' + id)
       .pipe(
         map((shoppingCart: IShoppingCart) => {
           this.shoppingCartSource.next(shoppingCart);
+          this.shipping = shoppingCart.shippingPrice!;
           this.calculateTotals();
         })
       );
@@ -94,7 +105,11 @@ export class ShoppingCartService {
 
   setShippingPrice(deliveryMethod: IDeliveryMethod) {
     this.shipping = deliveryMethod.price;
+    const shoppingCart = this.getCurrentShoppingCartValue();
+    shoppingCart!.deliveryMethodId = deliveryMethod.id;
+    shoppingCart!.shippingPrice = deliveryMethod.price;
     this.calculateTotals();
+    this.setShoppingCart(shoppingCart!);
   }
 
   private mapBookToCartItem(item: IBook, quantity: number) {

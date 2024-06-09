@@ -33,11 +33,11 @@
                                         </div>
                                     </div>
                                 </th>
-                                <td class="align-middle"><strong>{{item.price | currency}}</strong></td>
+                                <td class="align-middle"><strong>{{item.price | currency:"RSD":"symbol"}}</strong></td>
                                 <td class="align-middle">
                                     <span class="fw-bold px-4">{{item.quantity}}</span>
                                 </td>
-                                <td class="align-middle"><strong>{{item.price * item.quantity | currency}}</strong></td>
+                                <td class="align-middle"><strong>{{item.price * item.quantity | currency:"RSD":"symbol"}}</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -50,15 +50,15 @@
                 <ul class="list-unstyled mb-1">
                     <li class="d-flex justify-content-between py-3 border-bottom">
                         <strong class="text-muted">Cena</strong>
-                        <strong>{{order.subtotal | currency}}</strong>
+                        <strong>{{order.subtotal | currency:"RSD":"symbol"}}</strong>
                     </li>
                     <li class="d-flex justify-content-between py-3 border-bottom">
                         <strong class="text-muted">Dostava</strong>
-                        <strong>{{order.shippingPrice | currency}}</strong>
+                        <strong>{{order.shippingPrice | currency:"RSD":"symbol"}}</strong>
                     </li>
                     <li class="d-flex justify-content-between py-3 border-bottom">
                         <strong class="text-muted">Cena</strong>
-                        <strong>{{order.total | currency}}</strong>
+                        <strong>{{order.total | currency:"RSD":"symbol"}}</strong>
                     </li>
                 </ul>
             </div>
