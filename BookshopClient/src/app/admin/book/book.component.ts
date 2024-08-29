@@ -52,7 +52,7 @@ export class BookComponent implements OnInit {
 
       dialogRef.componentInstance.flag = flag;
       dialogRef.afterClosed().subscribe(
-        results => {
+        () => {
           this.getBooks();
         }
       )

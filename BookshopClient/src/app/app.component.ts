@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from './shopping-cart/shopping-cart.service';
 import { AccountService } from './account/account.service';
+import { WishListService } from './wish-list/wish-list.service';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,13 @@ export class AppComponent implements OnInit {
 
   constructor(
     private shoppingCartService: ShoppingCartService,
+    private wishListService: WishListService,
     private accountService: AccountService
   ) {}
 
   ngOnInit(): void {
     this.loadShoppingCart();
+    this.loadWishList();
     this.loadCurrentUser();
   }
 
@@ -26,6 +29,16 @@ export class AppComponent implements OnInit {
       this.shoppingCartService.getShoppingCart(shoppingCartId).subscribe({
         next: () => console.log('Initialised shopping cart'),
         error: (error) => console.log(error),
+      });
+    }
+  }
+
+  loadWishList() {
+    const wishListId = localStorage.getItem('wishList_id');
+    if (wishListId) {
+      this.wishListService.getWishList(wishListId).subscribe({
+        next: () => console.log('Initialised wish list'),
+        error: (error) => console.log(error)
       });
     }
   }

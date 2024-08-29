@@ -6,7 +6,7 @@
     <mat-form-field>
       <input matInput placeholder="Pretraži knjige..." name="Book Search" (keyup)="applyFilter($event)"/>
     </mat-form-field>
-    <table mat-table #table [dataSource]="dataSource" class="mat-cell" matSort>
+    <mat-table #table [dataSource]="dataSource" class="mat-cell" matSort>
       <!--ID-->
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
@@ -115,7 +115,7 @@
         style="cursor: pointer;"
         *matRowDef="let row; columns: displayedColumns">
       </mat-row>
-    </table>
+    </mat-table>
 
     <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
     </mat-paginator>

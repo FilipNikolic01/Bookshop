@@ -25,6 +25,7 @@ namespace BookshopServer.Helpers
             CreateMap<Address, AddressDto>().ReverseMap();
             CreateMap<ShoppingCartDto, ShoppingCart>();
             CreateMap<CartItemDto, CartItem>();
+            CreateMap<WishListDto, WishList>();
             CreateMap<AddressDto, OrderAddress>();
             CreateMap<Order, OrderToReturnDto>()
                 .ForMember(d => d.DeliveryMethod, o => o.MapFrom(s => s.DeliveryMethod.ShortName))

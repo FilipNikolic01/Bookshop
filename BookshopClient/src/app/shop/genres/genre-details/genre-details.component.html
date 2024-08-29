@@ -1,14 +1,21 @@
 <ng-container *ngIf="genre">
-    <div class="row" id="genre">
-
-        <div id="autor-foto" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-        <img src="{{genre}}" class="foto-r" alt="{{genre.name}}">
-    </div>
-        
-    <div id="autor-bio" class="col-lg-20 col-md-20 col-sm-20 col-xs-24">
-        <h1>{{genre.name}}</h1>
-        <div><div style="text-align: justify;"> {{genre.description}}</div></div>
-    </div>           
-                             
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-3">
+                <div class="card border-0" style="width: fit-content; height: fit-content;">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQATg0Kf6pfHmmBzvXyDmdqEyNwbHE8eEcFmg&s" alt="{{genre.name}}">
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="ps-lg-1-6 ps-xl-5">
+                    <div class="mb-5 wow fadeIn">
+                        <div class="text-start mb-1-6 wow fadeIn">
+                            <h2 class="h1 mb-0 text-primary">{{genre.name}}</h2>
+                        </div>
+                        <p>{{genre.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </ng-container>

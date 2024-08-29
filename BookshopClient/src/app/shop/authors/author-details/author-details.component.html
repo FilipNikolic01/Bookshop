@@ -1,14 +1,21 @@
-<<ng-container *ngIf="author">
-    <div class="row" id="autor">
-
-        <div id="autor-foto" class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-        <img src="{{author.profilePictureURL}}" class="foto-r" alt="{{author.fullName}}">
-    </div>
-        
-    <div id="autor-bio" class="col-lg-20 col-md-20 col-sm-20 col-xs-24">
-        <h1>{{author.fullName}}</h1>
-        <div><div style="text-align: justify;"> {{author.biography}}</div></div>
-    </div>           
-                             
+<ng-container *ngIf="author">
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-2">
+                <div class="card border-0 shadow" style="width: fit-content; height: fit-content;">
+                    <img src="{{author.profilePictureURL}}" alt="{{author.fullName}}">
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="ps-lg-1-6 ps-xl-5">
+                    <div class="mb-5 wow fadeIn">
+                        <div class="text-start mb-1-6 wow fadeIn">
+                            <h2 class="h1 mb-0 text-primary">{{author.fullName}}</h2>
+                        </div>
+                        <p>{{author.biography}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </ng-container>

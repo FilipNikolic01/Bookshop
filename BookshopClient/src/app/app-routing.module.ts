@@ -15,9 +15,11 @@ const routes: Routes = [
 
   {path: 'shop', loadChildren: () => import('./shop/shop.module').then(mod => mod.ShopModule), data: {breadcrumb: 'Prodavnica'}},
 
-  {path: 'admin', canActivate:[AuthGuard, RoleGuard], loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule)},
+  {path: 'admin', canActivate:[AuthGuard, RoleGuard], loadChildren: () => import('./admin/admin.module').then(mod => mod.AdminModule), data: {breadcrumb: 'Admin'}},
 
   {path: 'cart', loadChildren: () => import('./shopping-cart/shopping-cart.module').then(mod => mod.ShoppingCartModule), data:{breadcrumb: 'Korpa'}},
+
+  {path: 'wishlist', loadChildren: () => import('./wish-list/wish-list.module').then(mod => mod.WishListModule), data: {breadcrumb: 'Lista želja'}},
   
   {path: 'checkout', canActivate:[AuthGuard], loadChildren: () => import('./checkout/checkout.module').then(mod => mod.CheckoutModule), data: {breadcrumb: 'Plaćanje'}},
 

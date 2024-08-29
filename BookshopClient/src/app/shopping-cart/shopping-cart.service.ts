@@ -55,10 +55,23 @@ export class ShoppingCartService {
     return this.shoppingCartSource.value;
   }
 
-  addItemToCart(item: IBook, quantity = 1) {
-    const itemToAdd: ICartItem = this.mapBookToCartItem(item, quantity);
+  isIBook(item: IBook | ICartItem): item is IBook {
+    return 'isbn' in item;
+  }
+
+  addItemToCart(item: IBook | ICartItem, quantity = 1) {
+    if (this.isIBook(item)) {
+      const itemToAdd: ICartItem = this.mapBookToCartItem(item, quantity);
+      this.addToCart(itemToAdd, quantity)
+    }
+    else {
+      this.addToCart(item, quantity);
+    }
+  }
+
+  private addToCart(item: ICartItem, quantity: number) {
     const shoppingCart = this.getCurrentShoppingCartValue() ?? this.createShoppingCart();
-    shoppingCart.items = this.addOrUpdateItem(shoppingCart.items, itemToAdd, quantity);
+    shoppingCart.items = this.addOrUpdateItem(shoppingCart.items, item, quantity);
     this.setShoppingCart(shoppingCart);
   }
 

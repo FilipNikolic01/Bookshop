@@ -3,7 +3,6 @@ using BookshopServer.Dtos;
 using BookshopServer.Entities;
 using BookshopServer.Errors;
 using BookshopServer.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookshopServer.Controllers

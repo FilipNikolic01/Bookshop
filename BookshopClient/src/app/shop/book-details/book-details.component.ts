@@ -4,6 +4,7 @@ import { ShopService } from '../shop.service';
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { ShoppingCartService } from 'src/app/shopping-cart/shopping-cart.service';
+import { WishListService } from 'src/app/wish-list/wish-list.service';
 
 @Component({
   selector: 'app-book-details',
@@ -14,7 +15,9 @@ export class BookDetailsComponent implements OnInit {
   book!: IBook
   quantity = 1;
 
-  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private breadcrumbService: BreadcrumbService, private shoppingCartService: ShoppingCartService) {
+  constructor(private shopService: ShopService, private activatedRoute: ActivatedRoute, private breadcrumbService: BreadcrumbService, private shoppingCartService: ShoppingCartService,
+    private wishListService: WishListService
+  ) {
     breadcrumbService.set('@bookDetails', ' ');
   }
 
@@ -34,6 +37,10 @@ export class BookDetailsComponent implements OnInit {
 
   addItemToCart() {
     this.shoppingCartService.addItemToCart(this.book, this.quantity)
+  }
+
+  addItemToWishList() {
+    this.wishListService.addItemToWishList(this.book)
   }
 
   incrementQuantity() {
