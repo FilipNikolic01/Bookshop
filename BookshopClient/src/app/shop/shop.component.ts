@@ -15,7 +15,7 @@ export class ShopComponent implements OnInit {
   books?: IBook[] = [];
   genres: IGenre[] = [];
   authors: IAuthor[] = [];
-  shopParams = new ShopParams();
+  shopParams!: ShopParams;
   totalCount?: number;
   sortOptions = [
     {name: "A - Z", value: "name"},
@@ -23,20 +23,20 @@ export class ShopComponent implements OnInit {
     {name: "Po ceni opadajuće", value: "priceDesc"}
   ];
 
-  constructor(private shopService: ShopService) {}
+  constructor(private shopService: ShopService) {
+    this.shopParams = this.shopService.getShopParams();
+  }
 
   ngOnInit(): void {
-    this.getBooks();
+    this.getBooks(true);
     this.getGenres();
     this.getAuthors();
   }
 
-  getBooks() {
-    this.shopService.getBooks(this.shopParams).subscribe({
+  getBooks(useCache = false) {
+    this.shopService.getBooks(useCache).subscribe({
       next: response => {
         this.books = response?.data;
-        this.shopParams.pageNumber = response?.pageIndex;
-        this.shopParams.pageSize = response?.pageSize;
         this.totalCount = response?.count
       },
       error: error => console.log(error)
@@ -58,38 +58,49 @@ export class ShopComponent implements OnInit {
   }
 
   onGenreSelected(genreId: number) {
-    this.shopParams.genreId = genreId;
-    this.shopParams.pageNumber = 1;
+    const params = this.shopService.getShopParams();
+    params.genreId = genreId;
+    params.pageNumber = 1;
+    this.shopService.setShopParams(params);
     this.getBooks();
   }
 
   onAuthorSelected(authorId: number) {
-    this.shopParams.authorId = authorId;
-    this.shopParams.pageNumber = 1;
+    const params = this.shopService.getShopParams();
+    params.authorId = authorId;
+    params.pageNumber = 1;
+    this.shopService.setShopParams(params);
     this.getBooks();
   }
 
   onSortSelected(sort: string) {
-    this.shopParams.sort = sort;
+    const params = this.shopService.getShopParams();
+    params.sort = sort;
+    this.shopService.setShopParams(params);
     this.getBooks();
   }
 
   onPageChanged(event: any) {
-    if (this.shopParams.pageNumber !== event) {
-      this.shopParams.pageNumber = event;
-      this.getBooks();
+    const params = this.shopService.getShopParams();
+    if (params.pageNumber !== event) {
+      params.pageNumber = event;
+      this.shopService.setShopParams(params);
+      this.getBooks(true);
     }
   }
 
   onSearch() {
-    this.shopParams.search = this.searchTerm.nativeElement.value
-    this.shopParams.pageNumber = 1;
+    const params = this.shopService.getShopParams();
+    params.search = this.searchTerm.nativeElement.value
+    params.pageNumber = 1;
+    this.shopService.setShopParams(params);
     this.getBooks();
   }
 
   onReset() {
     this.searchTerm.nativeElement.value = '';
     this.shopParams = new ShopParams();
+    this.shopService.setShopParams(this.shopParams);
     this.getBooks();
   }
 

@@ -3,6 +3,7 @@ using BookshopServer.Data.Static;
 using BookshopServer.Dtos;
 using BookshopServer.Entities;
 using BookshopServer.Errors;
+using BookshopServer.Helpers;
 using BookshopServer.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,7 @@ namespace BookshopServer.Controllers
             _mapper = mapper;
         }
 
+        [Cached(600)]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IReadOnlyList<GenreDto>>> GetGenres()
@@ -30,6 +32,7 @@ namespace BookshopServer.Controllers
             return Ok(_mapper.Map<IReadOnlyList<Genre>, IReadOnlyList<GenreDto>>(genres));
         }
 
+        [Cached(600)]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof (ApiResponse), StatusCodes.Status404NotFound)]

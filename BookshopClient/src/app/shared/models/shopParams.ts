@@ -3,6 +3,6 @@ export class ShopParams {
     authorId = 0;
     sort = 'name';
     pageNumber? = 1;
-    pageSize? = 6;
+    pageSize? = 4;
     search!: string
 }

@@ -3,6 +3,7 @@ using BookshopServer.Data.Static;
 using BookshopServer.Dtos;
 using BookshopServer.Entities;
 using BookshopServer.Errors;
+using BookshopServer.Helpers;
 using BookshopServer.Interfaces;
 using BookshopServer.Repositories;
 using Microsoft.AspNetCore.Authorization;
@@ -23,6 +24,7 @@ namespace BookshopServer.Controllers
             _mapper = mapper;
         }
 
+        [Cached(600)]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IReadOnlyList<AuthorDto>>> GetAuthors()
@@ -32,6 +34,7 @@ namespace BookshopServer.Controllers
             return Ok(_mapper.Map<IReadOnlyList<Author>, IReadOnlyList<AuthorDto>>(authors));
         }
 
+        [Cached(600)]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof (ApiResponse), StatusCodes.Status404NotFound)]

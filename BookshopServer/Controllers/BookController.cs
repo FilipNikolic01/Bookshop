@@ -24,6 +24,7 @@ namespace BookshopServer.Controllers
             _mapper = mapper;
         }
 
+        [Cached(600)]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<Pagination<BookViewDto>>> GetBooks(
@@ -41,6 +42,7 @@ namespace BookshopServer.Controllers
                 totalItems, data));
         }
 
+        [Cached(600)]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof (ApiResponse), StatusCodes.Status404NotFound)]
